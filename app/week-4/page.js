@@ -2,7 +2,7 @@ import NewItem from "./new-item";
 
 export default function Page(){
     return(
-        <main className="bg-black min-h-screen text-white text-bold ">
+        <main class = "min-h-screen bg-black flex justify-center">
            <NewItem/>
         </main>
     );
