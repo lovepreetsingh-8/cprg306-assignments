@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 
-export default function NewItem() {
+export default function NewItem({onAddItem}) {
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState('Produce');
@@ -12,7 +12,9 @@ export default function NewItem() {
     const item = {name, quantity,category};
 
     console.log(item); 
-    alert(`Added item:${name}, quantitiy: ${quantity} & category: ${category}`); 
+
+    const newItem = {id:(Math.random().toString(20).slice(2))  ,name,quantity,category}
+    onAddItem(newItem);
 
     setName('');
     setQuantity(1);
@@ -20,13 +22,13 @@ export default function NewItem() {
   };
 
   return (
-    <form className=' m-5 p-4 max-h-[11rem]  bg-slate-900' onSubmit={handleSubmit}  >
+    <form className='max-w-sm w-full mt-2 mb-8 bg-slate-900 text-black ' onSubmit={handleSubmit}  >
       <div className='mb-1' >
-        <input className='w-full mb-1.5 p-2 border-gray-700 rounded-lg text-black' placeholder='Item Name' type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
+        <input className='w-full mb-1.5 p-2  border-gray-700 rounded-lg' placeholder='Item Name' type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
       </div>
       <div className= 'mb-2 flex justify-between'>
-        <input className='mr-14 p-2 border-gray-700 rounded-lg text-black' type="number" value={quantity} min="1" max="99" onChange={(e) => setQuantity(Number(e.target.value))} required/>
-        <select className='ml-14 p-2 border-gray-700 rounded-lg text-black' value={category} onChange={(e) => setCategory(e.target.value)}>
+        <input className='mr-14 p-2 border-gray-700 rounded-lg ' type="number" value={quantity} min="1" max="99" onChange={(e) => setQuantity(Number(e.target.value))} required/>
+        <select className='ml-14 p-2 border-gray-700 rounded-lg' value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="Produce" defaultChecked>Produce</option>
           <option value="Dairy">Dairy</option>
           <option value="Bakery">Bakery</option>
