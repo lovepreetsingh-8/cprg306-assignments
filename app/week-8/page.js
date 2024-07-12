@@ -1,9 +1,10 @@
 'use client'
+import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext, useUserAuth } from "./_utils/auth-context";
 
 const Page = () => {
-    const { user, gitHubSignIn, firebaseSignOut } = useContext(AuthContext);
+    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();//useContext(AuthContext);
  
     const signIn = async () =>{
         await gitHubSignIn();
@@ -20,8 +21,12 @@ return (
                 <p>
                  Welcome, {user.displayName} ({user.email})
                 </p>
-                <button onClick={signOut}>Logout</button>
-                <Link to="/shopping-list">Go to Shopping List</Link>
+                <div>
+                    <button onClick={signOut}>Logout</button>
+                    <Link href="/week-8/shopping-list">
+                    <button className="ml-10" >Go to Shopping List</button>
+                    </Link>
+                </div>    
             </div>
         ) : (
             <button onClick={signIn}>Login</button>

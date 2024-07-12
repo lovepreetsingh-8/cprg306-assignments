@@ -18,8 +18,8 @@ export default function Page(){
         <Route path="/redirect" element={ <Navigate to="/week-8" /> } />
     }
     
-    const handleItemSelect = (name) => {
-        const splitItemName = name.split(',\\.\\s')[0].replace(/[^\w\s]/g, '').trim().replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g, '');
+    const handleItemSelect = (item) => {
+        const splitItemName = item.name.split(',')[0].trim().replace(/\p{Emoji}/gu, '');
         setSelectedItemName(splitItemName);
     }
     const handleAddItem = (newItem) => {
@@ -29,7 +29,7 @@ export default function Page(){
         <main className=" bg-black min-h-screen text-white text-bold px-4">
             <h1 className="text-3xl font-bold p-3 pl-0">Shopping List</h1>
             <h2 className="text-xl font-bold pb-0">Add New Item</h2>
-            <div className="flex">
+            <div className="flex ">
                 <div>
                     <NewItem onAddItem = {handleAddItem}/>
                     <ItemList items = {items} onItemSelect={handleItemSelect}/>
