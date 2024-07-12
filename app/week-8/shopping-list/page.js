@@ -6,6 +6,8 @@ import itemData from "./item.json";
 import { useState } from "react";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
+import { Navigate } from 'react-router-dom';
+
 
 export default function Page(){
     const [items, setItems] = useState(itemData);
@@ -13,7 +15,7 @@ export default function Page(){
 
     const {user} = useUserAuth();
     if (!user) {
-            return <Redirect to = "/"/>
+        <Route path="/redirect" element={ <Navigate to="/week-8" /> } />
     }
     
     const handleItemSelect = (name) => {

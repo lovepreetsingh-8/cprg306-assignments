@@ -1,7 +1,9 @@
-import { useUserAuth } from "./_utils/auth-context";
+'use client'
+import { useContext } from "react";
+import { AuthContext, useUserAuth } from "./_utils/auth-context";
 
-export default Page = () => {
-    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+const Page = () => {
+    const { user, gitHubSignIn, firebaseSignOut } = useContext(AuthContext);
  
     const signIn = async () =>{
         await gitHubSignIn();
@@ -27,3 +29,4 @@ return (
     </div>
 );
 }
+export default Page;

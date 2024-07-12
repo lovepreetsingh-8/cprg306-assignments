@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
  
-const AuthContext = createContext();
+export const AuthContext = createContext();
  
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -37,6 +37,6 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
  
-export const useUserAuth = () => {
-  return useContext(AuthContext);
-};
+// export const useUserAuth = () => {
+//   return useContext(AuthContext);
+// };

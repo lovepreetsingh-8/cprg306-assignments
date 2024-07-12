@@ -27,7 +27,7 @@ return(
     {sortItems.map((item) => (
             (
                 <div  className='mb-5 bg-slate-900 hover:bg-orange-900 cursor-pointer p-2'>
-                        <li key ={item.id} onSelect={() => onItemSelect(item.name)} className="text-sm">
+                        <li key ={item.id} onClick={() => onItemSelect(item)} className="text-sm">
                         <p  className= "text-xl font-bold ">{item.name}</p>    
                             <p>Buy {item.quantity} in {item.category}</p>
                         </li>
